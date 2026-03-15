@@ -1,0 +1,17 @@
+{
+    "servers": {
+        "zoho-sprints": {
+            "command": "node",
+            "args": [
+                "/Users/dinesh-1904/Branches/Others/SprintsMCP/dist/index.js"
+            ],
+            "env": {
+                "ZOHO_SPRINTS_DOMAIN": "com",
+                "ZOHO_SPRINTS_REFRESH_TOKEN": "your-refresh-token",
+                "ZOHO_SPRINTS_CLIENT_ID": "your-client-id",
+                "ZOHO_SPRINTS_CLIENT_SECRET": "your-client-secret",
+                "ZOHO_SPRINTS_TEAM_ID": "your-team-id"
+            }
+        }
+    }
+}

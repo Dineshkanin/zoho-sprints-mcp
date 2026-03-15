@@ -111,6 +111,30 @@ Add to your `claude_desktop_config.json`:
 
 Add to your Cursor MCP settings:
 
+**To use Local development** (run from your local build):
+
+```json
+{
+  "mcpServers": {
+    "zoho-sprints": {
+      "command": "node",
+      "args": ["${absolute-path}/SprintsMCP/dist/index.js"],
+      "env": {
+        "ZOHO_SPRINTS_DOMAIN": "com",
+        "ZOHO_SPRINTS_REFRESH_TOKEN": "your-refresh-token",
+        "ZOHO_SPRINTS_CLIENT_ID": "your-client-id",
+        "ZOHO_SPRINTS_CLIENT_SECRET": "your-client-secret",
+        "ZOHO_SPRINTS_TEAM_ID": "your-team-id"
+      }
+    }
+  }
+}
+```
+
+> Replace `${absolute-path}/SprintsMCP/dist/index.js` with the actual path to your built `dist/index.js`. Make sure you run `npm run build` first.
+
+**To use published npm package**:
+
 ```json
 {
   "mcpServers": {
@@ -132,6 +156,30 @@ Add to your Cursor MCP settings:
 #### VS Code
 
 Add to your VS Code MCP settings (`.vscode/mcp.json`):
+
+**To use Local development** (run from your local build):
+
+```json
+{
+  "servers": {
+    "zoho-sprints": {
+      "command": "node",
+      "args": ["${absolute-path}/SprintsMCP/dist/index.js"],
+      "env": {
+        "ZOHO_SPRINTS_DOMAIN": "com",
+        "ZOHO_SPRINTS_REFRESH_TOKEN": "your-refresh-token",
+        "ZOHO_SPRINTS_CLIENT_ID": "your-client-id",
+        "ZOHO_SPRINTS_CLIENT_SECRET": "your-client-secret",
+        "ZOHO_SPRINTS_TEAM_ID": "your-team-id"
+      }
+    }
+  }
+}
+```
+
+> Replace `${absolute-path}/SprintsMCP/dist/index.js` with the actual path to your built `dist/index.js`. Make sure you run `npm run build` first.
+
+**To use published npm package**:
 
 ```json
 {
