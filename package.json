@@ -1,0 +1,55 @@
+{
+    "name": "zoho-sprints-mcp",
+    "version": "1.0.0",
+    "description": "MCP (Model Context Protocol) server for Zoho Sprints – Manage workspaces, projects, sprints, items, epics, releases, timesheets, meetings, users, and more through natural language.",
+    "keywords": [
+        "mcp",
+        "model-context-protocol",
+        "zoho",
+        "zoho-sprints",
+        "sprints",
+        "agile",
+        "scrum",
+        "project-management",
+        "ai",
+        "llm"
+    ],
+    "author": "dineshkani.n",
+    "license": "MIT",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "bin": {
+        "zoho-sprints-mcp": "dist/index.js"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "start": "node dist/index.js",
+        "start:http": "MCP_TRANSPORT=http node dist/index.js",
+        "testrun": "npx dotenv -e .env -- npx @modelcontextprotocol/inspector node dist/index.js",
+        "prepare": "npm run build",
+        "lint": "eslint src/",
+        "clean": "rm -rf dist"
+    },
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.12.1"
+    },
+    "devDependencies": {
+        "@types/node": "^22.15.21",
+        "dotenv-cli": "^11.0.0",
+        "typescript": "^5.8.3"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    }
+}
