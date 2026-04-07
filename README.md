@@ -488,24 +488,9 @@ The server exposes read-only MCP Resources that clients can subscribe to:
 | `zoho-sprints://projects`     | List of all projects in the current workspace                                                       |
 | `zoho-sprints://team-members` | List of all team members in the current workspace                                                   |
 
-## Rate Limiting & Retry
+## Rate Limiting, Retry & Caching
 
-The server includes a **built-in token-bucket rate limiter** that enforces Zoho's API call limit. The limiter dynamically syncs with the `x-rate-limit` response header from Zoho (e.g. `[{"duration":120,"remaining-count":999}]`) — if the header is absent, it falls back to the default of 30 calls/min. Excess requests are automatically queued.
-
-A **retry budget** caps the total number of retries across all concurrent requests to **10 per minute**, preventing thundering-herd cascades during outages.
-
-Transient failures are retried automatically with **exponential backoff**:
-
-| Error Type  | Behaviour                                                    |
-| ----------- | ------------------------------------------------------------ |
-| **401**     | Token refreshed once, request retried                        |
-| **429**     | Respects `Retry-After` header, waits, and retries (up to 3×) |
-| **5xx**     | Exponential backoff: 1 s → 2 s → 4 s (up to 3 attempts)      |
-| **Network** | Same exponential backoff as 5xx errors                       |
-
-## Caching
-
-GET responses are cached in-memory for **60 seconds**. Write operations (POST/DELETE) automatically invalidate related cache entries. The cache drastically reduces redundant API calls when tools are called in rapid succession.
+Rate limiting, automatic retries with exponential backoff, and response caching are all handled internally — no configuration needed.
 
 ## Debug Mode
 
