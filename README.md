@@ -58,12 +58,11 @@ npx zoho-sprints-mcp
 | `MCP_HTTP_HOST`              | No       | Bind address for HTTP transport (default: `0.0.0.0`)                                     |
 | `MCP_HTTP_PATH`              | No       | Endpoint path for HTTP transport (default: `/mcp`)                                       |
 
-### Generating OAuth2 Tokens
+### Generating OAuth2 Credentials
 
-1. Go to [Zoho API Console](https://api-console.zoho.com/)
-2. Create a **Self Client**
-3. Generate a token with the scope: `ZohoSprints.projects.ALL,ZohoSprints.sprints.ALL,ZohoSprints.items.ALL,ZohoSprints.teams.READ,ZohoSprints.timesheets.ALL,ZohoSprints.meetings.ALL,ZohoSprints.release.ALL,ZohoSprints.epic.ALL`
-4. Use the code to get access & refresh tokens via the token endpoint
+#### How to get Client ID, Client Secret & Refresh Token
+
+For a detailed walkthrough on creating a client and generating tokens, refer to the [Zoho OAuth Self Client Overview](https://www.zoho.com/accounts/protocol/oauth/self-client/overview.html).
 
 ### MCP Client Configuration
 
