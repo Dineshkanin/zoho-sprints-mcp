@@ -56,7 +56,7 @@ npx zoho-sprints-mcp
 
 1. Go to [Zoho API Console](https://api-console.zoho.com/)
 2. Create a **Self Client**
-3. Generate a token with the scope: `ZohoSprints.projects.ALL,ZohoSprints.sprints.ALL,ZohoSprints.items.ALL,ZohoSprints.team.READ,ZohoSprints.timesheets.ALL,ZohoSprints.meetings.ALL,ZohoSprints.release.ALL,ZohoSprints.epic.ALL`
+3. Generate a token with the scope: `ZohoSprints.projects.ALL,ZohoSprints.sprints.ALL,ZohoSprints.items.ALL,ZohoSprints.teams.READ,ZohoSprints.timesheets.ALL,ZohoSprints.meetings.ALL,ZohoSprints.release.ALL,ZohoSprints.epic.ALL`
 4. Use the code to get access & refresh tokens via the token endpoint
 
 ### MCP Client Configuration

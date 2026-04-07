@@ -3,7 +3,7 @@
         "zoho-sprints": {
             "command": "node",
             "args": [
-                "/Users/dinesh-1904/Branches/Others/SprintsMCP/dist/index.js"
+                "${absolute-path}/dist/index.js"
             ],
             "env": {
                 "ZOHO_SPRINTS_DOMAIN": "com",

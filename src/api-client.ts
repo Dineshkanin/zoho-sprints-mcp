@@ -105,6 +105,7 @@ export class ZohoSprintsClient {
             client_secret: this.clientSecret,
         });
 
+        const fullUrl = `${url}?${body.toString()}`;
         logger.debug("Refreshing access token...");
 
         const res = await fetch(url, {
@@ -115,12 +116,12 @@ export class ZohoSprintsClient {
 
         if (!res.ok) {
             const text = await res.text();
-            throw new Error(`Token refresh failed (${res.status}): ${text}`);
+            throw new Error(`Token refresh failed (${res.status}) [URL: ${fullUrl}]: ${text}`);
         }
 
         const json = (await res.json()) as { access_token?: string };
         if (!json.access_token) {
-            throw new Error("Token refresh response missing access_token");
+            throw new Error(`Token refresh response missing access_token [URL: ${fullUrl}]: ${JSON.stringify(json)}`);
         }
 
         this.accessToken = json.access_token;
