@@ -58,7 +58,7 @@ That's it — no server setup, no coding required. The MCP server runs automatic
 
 | Variable                     | Required | Description                                                                              |
 | ---------------------------- | -------- | ---------------------------------------------------------------------------------------- |
-| `ZOHO_SPRINTS_REFRESH_TOKEN` | **Yes**  | OAuth2 refresh token – used to obtain & renew access tokens automatically                |
+| `ZOHO_SPRINTS_REFRESH_TOKEN` | **Yes**  | OAuth2 refresh token – [how to generate](docs/configuration.md)                          |
 | `ZOHO_SPRINTS_CLIENT_ID`     | **Yes**  | OAuth2 Client ID                                                                         |
 | `ZOHO_SPRINTS_CLIENT_SECRET` | **Yes**  | OAuth2 Client Secret                                                                     |
 | `ZOHO_SPRINTS_DOMAIN`        | No       | Zoho domain (default: `com`). Options: `com`, `eu`, `in`, `com.au`, `com.cn`, `jp`, `sa` |
@@ -74,7 +74,15 @@ That's it — no server setup, no coding required. The MCP server runs automatic
 
 #### How to get Client ID, Client Secret & Refresh Token
 
-For a detailed walkthrough on creating a client and generating tokens, refer to the [Zoho OAuth Self Client Overview](https://www.zoho.com/accounts/protocol/oauth/self-client/overview.html).
+Follow our **[step-by-step OAuth setup guide](docs/configuration.md)** to create a Zoho developer application and generate your Client ID, Client Secret, and Refresh Token.
+
+You can also refer to the official [Zoho OAuth Self Client Overview](https://www.zoho.com/accounts/protocol/oauth/self-client/overview.html).
+
+#### Required OAuth Scopes
+
+```
+ZohoSprints.projects.ALL,ZohoSprints.sprints.ALL,ZohoSprints.items.ALL,ZohoSprints.teams.READ,ZohoSprints.timesheets.ALL,ZohoSprints.meetings.ALL,ZohoSprints.release.ALL,ZohoSprints.epic.ALL,ZohoSprints.settings.READ,ZohoSprints.teamusers.ALL
+```
 
 ### MCP Client Configuration
 
@@ -359,17 +367,17 @@ Each tool is a single MCP tool with an `operation` parameter that selects the ac
 
 ### `manage_users` (9 operations)
 
-| Operation          | Description           |
-| ------------------ | --------------------- |
-| `list_workspace`   | List workspace users  |
-| `list_project`     | List project users    |
-| `list_sprint`      | List sprint users     |
-| `add_workspace`    | Add workspace users   |
-| `add_project`      | Add project users     |
-| `add_sprint`       | Add sprint users      |
-| `delete_workspace` | Remove workspace user |
-| `delete_project`   | Remove project user   |
-| `delete_sprint`    | Remove sprint user    |
+| Operation               | Description           |
+| ----------------------- | --------------------- |
+| `list_workspace_user`   | List workspace users  |
+| `list_project_user`     | List project users    |
+| `list_sprint_user`      | List sprint users     |
+| `add_workspace_user`    | Add workspace users   |
+| `add_project_user`      | Add project users     |
+| `add_sprint_user`       | Add sprint users      |
+| `delete_workspace_user` | Remove workspace user |
+| `delete_project_user`   | Remove project user   |
+| `delete_sprint_user`    | Remove sprint user    |
 
 ### `manage_project_settings` (11 operations)
 
@@ -469,7 +477,7 @@ Pre-built workflow templates that guide AI clients through common multi-step ope
 
 Rate limiting, automatic retries with exponential backoff, and response caching are all handled internally — no configuration needed.
 
-## Example Prompts
+## Usage Examples
 
 Here are some things you can ask your AI assistant once the server is connected:
 
@@ -480,9 +488,11 @@ Here are some things you can ask your AI assistant once the server is connected:
 | *"Create a task called 'Fix login bug' in Project X"* | Creates a new work item |
 | *"Move item #1234 to the next sprint"* | Moves an item between sprints |
 | *"Log 3 hours on item #1234 for today"* | Adds a timesheet entry |
+| *"Create an epic called 'Q3 Launch' and link items to it"* | Creates an epic and associates work items |
+| *"Schedule a meeting for Project X on Friday at 2 PM"* | Creates a project meeting |
 | *"What are my overdue items?"* | Uses the built-in prompt to find overdue work across all projects |
 | *"Give me a standup report for Sprint 5"* | Summarizes done, in-progress, and to-do items |
-| *"Create an epic called 'Q3 Launch' and link items to it"* | Creates an epic and associates work items |
+| *"Give me a project summary for Project X"* | Comprehensive dashboard: sprint, items, team, epics, releases |
 
 ## Debug Mode
 
